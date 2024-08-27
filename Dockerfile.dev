@@ -1,0 +1,9 @@
+FROM node:18-alpine
+
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+
+COPY . .
+EXPOSE 3000
+CMD npx prisma generate && npx prisma db push && npx prisma studio & npm run dev
